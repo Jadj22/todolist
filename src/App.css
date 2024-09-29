@@ -92,6 +92,31 @@ header .themeSelector .activeTheme{
   background-color: #03b056;
 }
 
+/* Media query pour les téléphones (max-width: 480px) */
+@media (max-width: 480px) {
+  .addTask {
+    padding: 15px 10px;
+    max-width: 100%;
+    margin: 10px;
+    border-radius: 3px;
+  }
+
+  .addTask form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .addTask form input {
+    padding: 10px 8px;
+    font-size: 16px;
+  }
+
+  .addTask form button {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
 .showTask{
   padding: 20px 15px;
   border-radius: 5px;
