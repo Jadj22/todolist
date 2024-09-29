@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Header } from './components/Header';
 
-function App() {
+
+import { useEffect, useState } from 'react';
+import "./App.css";
+import AddTask from './components/AddTask';
+import ShowTask from './components/ShowTask';
+
+
+export default function App() {
+
+  //Ici on a initialise l'etat tasklist a tableau vide
+    const [ tasklist, setTasklist ] = useState(JSON.parse(localStorage.getItem('tasklist')) || []);
+  //Ici on a initialise l'etat task a objet vide
+    const [task, setTask ] = useState({})
+
+  useEffect(() => {
+    localStorage.setItem('tasklist', JSON.stringify(tasklist))
+  },[tasklist])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="App">
+        <Header />
+        {/*ici dans ces composants on recois les props*/}
+        <AddTask  tasklist={tasklist} setTasklist={setTasklist} task={task} setTask={setTask}/>
+        <ShowTask tasklist={tasklist} setTasklist={setTasklist} task={task} setTask={setTask}/>
+        </div>
+  )
 }
-
-export default App;
